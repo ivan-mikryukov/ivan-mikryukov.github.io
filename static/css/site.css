@@ -61,6 +61,19 @@ main { padding-block: 2rem; }
   white-space: nowrap;
 }
 
+/* ---------- Home ---------- */
+
+/* Photos side by side at the same height, uncropped. Each one grows in
+   proportion to its aspect ratio (--aspect = width / height, set in the HTML). */
+.home-photos { display: flex; align-items: flex-start; gap: 0.75rem; margin-block: 1.5rem; }
+.home-photos img { flex: var(--aspect) 1 0; min-width: 0; }
+
+/* Narrow screens: one photo per row, full width. */
+@media (max-width: 30rem) {
+  .home-photos { flex-direction: column; }
+  .home-photos img { flex: none; width: 100%; }
+}
+
 /* ---------- Projects ---------- */
 
 .cards {
