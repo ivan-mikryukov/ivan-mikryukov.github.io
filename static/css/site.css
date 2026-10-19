@@ -219,3 +219,13 @@ main { padding-block: 2rem; }
 :lang(ru) cite { font-style: normal; quotes: "«" "»"; }
 :lang(ru) cite::before { content: open-quote; }
 :lang(ru) cite::after { content: close-quote; }
+
+/* ---------- Sports ---------- */
+
+/* Achievements: years in a narrow left column, events beside them.
+   A year with several events has one <dt> and several <dd>s, so each
+   is pinned to its column and the grid starts a new row as needed. */
+.achievements dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1.5rem; }
+.achievements dt { grid-column: 1; font-weight: 600; }
+.achievements dd { grid-column: 2; margin: 0; }
+.result { color: var(--muted); }
