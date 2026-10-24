@@ -39,16 +39,19 @@ img { max-width: 100%; height: auto; }
 [aria-current] { color: inherit; font-weight: 600; text-decoration: none; }
 
 /* Narrow screens: the name and the language switch share the first row;
-   the menu gets a full-width row of its own below them. */
-@media (max-width: 48rem) {
+   the menu gets a full-width row of its own below them. The one-row header
+   needs about 52.5rem in Russian (7 menu items); 56rem leaves room for fonts
+   that are wider than the one it was measured with. */
+@media (max-width: 56rem) {
   .site-header nav { order: 1; flex-basis: 100%; }
 }
 
 main { padding-block: 2rem; }
 .role { color: var(--muted); margin-top: -0.75rem; }
 
-.contacts dt { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
-.contacts dd { margin: 0; }
+/* Label-above-value lists: Contacts, and the gear list in the CV. */
+.contacts dt, .cv dt { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
+.contacts dd, .cv dd { margin: 0; }
 
 .site-footer {
   border-top: 1px solid var(--line);
@@ -229,3 +232,13 @@ main { padding-block: 2rem; }
 .achievements dt { grid-column: 1; font-weight: 600; }
 .achievements dd { grid-column: 2; margin: 0; }
 .result { color: var(--muted); }
+
+/* ---------- CV ---------- */
+
+/* A job or a school: the heading, then its dates as the next paragraph. */
+.cv h3 { margin-bottom: 0.25rem; }
+.cv h3 + p { margin-top: 0; color: var(--muted); }
+
+/* Download links above the CV. A flex row with gap puts space only between
+   items, so a link that wraps to a new line starts at the left edge. */
+.downloads { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
