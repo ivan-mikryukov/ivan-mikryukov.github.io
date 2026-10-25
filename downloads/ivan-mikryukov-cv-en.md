@@ -1,94 +1,76 @@
 # Ivan Mikryukov
 
-Producer, videographer, editor. Looking for an internship or a job in media production.
+Producer, videographer, editor
 
-- Moscow
-- Telegram: [@mikryuk](https://t.me/mikryuk), with the channel «МИКРЮКОВ» and all my work in the profile
+- Moscow, Russia
+- Telegram: [@mikryuk](https://t.me/mikryuk)
 - Portfolio: [ivan-mikryukov.github.io/en/projects](https://ivan-mikryukov.github.io/en/projects/)
 
-## About me
+## Objective
 
-Second-year student at Plekhanov Russian University of Economics, Media Communications program, Film and Media Production track. I am developing as a producer, videographer and editor.
-
-I have worked with private clients, athletes, bloggers and commercial projects. I take a project from idea to finished result:
-
-- discuss the brief with the client;
-- develop and agree on the concept;
-- organize the shoot;
-- work with the people on camera and the locations;
-- shoot;
-- edit and do the post-production.
+Internship or position in video content production.
 
 ## Experience
 
-### Videographer and editor, freelance
+### Videographer / Editor — freelance
 
-2023 — present
+2023 – present
 
-- Shooting and editing commercial and personal video content.
-- Working with private clients, athletes, bloggers and local projects.
-- Short vertical videos (Reels, Shorts) and long horizontal videos.
-- The full cycle: client communication, idea development, preparing and organizing the shoot, shooting, editing and final grading.
-- Organizing the shoot on my own and working with the people on camera.
+Filming and editing commercial and original video content for private clients, athletes, bloggers and businesses.
 
-## Selected projects
+Full project cycle, from idea to finished result:
 
-- Vertical videos for Alexandra Deeva, Master of Sport in figure skating.
-- Fitness content together with a trainer: idea, organizing the shoot, working with the athlete, shooting and editing.
-- Sports content with an equestrian coach.
-- Automotive video content.
-- Shooting and editing a wedding.
-- Long custom videos for private clients.
-- Content for local venues, brands and social media.
+1. Understanding the client's needs
+2. Developing the overall concept
+3. Detailed scriptwriting and storyboarding
+4. Pre-production and shoot organization
+5. Filming
+6. Editing and final post-production
 
-## Production skills
+Main areas of work:
 
-- Developing a project concept
-- Finding people to film and communicating with clients
-- Preparing and organizing shoots, working with locations
-- Planning the shoot and its schedule
-- Coordinating the crew and cast and solving logistics on set
-- Taking a project from idea to finished result
-
-## Shooting and editing
-
-- Video shooting, vertical and horizontal formats
-- Editing and post-production in DaVinci Resolve
-- Color grading
-- Sound
-- Masking and chroma key
-- Lighting and gimbal work
-
-## Gear
-
-Camera
-: Sony ZV-E10 II
-
-Lens
-: Sigma 18–50mm f/2.8
-
-Gimbal
-: DJI RS 4 Mini
+- Weddings
+- Children's parties
+- Corporate events
+- Sports and fitness
+- Automotive content
 
 ## Education
 
 ### Plekhanov Russian University of Economics
 
-2025 — present
+2025 – 2029
 
-Media Communications program, Film and Media Production track, year 2.
+Program: Media Communications.
 
-On my own, I study film theory, cinematography, lighting and editing.
+Track: Film and Media Production.
+
+*Independently studying textbooks on film theory, cinematography, lighting and editing.*
+
+## Skills
+
+- Concept, script and storyboard development
+- Shoot preparation and organization
+- Lighting and gimbal work
+- Editing and post-production in **DaVinci Resolve**: masking and chroma key, color grading, sound
+
+## Equipment
+
+- Camera: Sony ZV-E10 II
+- Lens: Sigma 18–50mm f/2.8
+- Gimbal: DJI RS 4 Mini
+- Microphones: DJI Mic mini 2/3
+- Monitor: Feelworld F 5 Pro X
 
 ## Sports
 
-- Moscow Hockey Championship, 1st place (2024)
-- Moscow Oblast Hockey Championship, 3rd place (2025)
-- Moscow Marathon finisher, 42.2 km (2026)
-- 13 years of hockey, since age 6
+- Moscow ice hockey champion
+- Bronze medalist, Moscow Region ice hockey championship
+- Moscow Marathon finisher
+- 13 years of ice hockey
 
-Sport taught me discipline, teamwork and how to keep going under pressure until the job is done.
+*Years of competitive sport have built discipline, a team mindset, resilience under pressure and a systematic, results-driven approach.*
 
-## Personal qualities
+## Qualities
 
-Sociable, proactive, responsible, calm under pressure, a team player who finishes what he starts.
+Strong communicator · proactive · responsible · disciplined · calm under pressure · team player who sees projects through to completion

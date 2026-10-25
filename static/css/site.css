@@ -49,9 +49,9 @@ img { max-width: 100%; height: auto; }
 main { padding-block: 2rem; }
 .role { color: var(--muted); margin-top: -0.75rem; }
 
-/* Label-above-value lists: Contacts, and the gear list in the CV. */
-.contacts dt, .cv dt { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
-.contacts dd, .cv dd { margin: 0; }
+/* Label-above-value list on the Contacts page. */
+.contacts dt { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
+.contacts dd { margin: 0; }
 
 .site-footer {
   border-top: 1px solid var(--line);
@@ -235,10 +235,78 @@ main { padding-block: 2rem; }
 
 /* ---------- CV ---------- */
 
-/* A job or a school: the heading, then its dates as the next paragraph. */
-.cv h3 { margin-bottom: 0.25rem; }
-.cv h3 + p { margin-top: 0; color: var(--muted); }
+/* The CV block (partials/cv.html). Temporary, like the rest of this file:
+   step 7 replaces it with the design's cv-base.css and cv-screen.css. */
 
-/* Download links above the CV. A flex row with gap puts space only between
-   items, so a link that wraps to a new line starts at the left edge. */
-.downloads { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+/* Header: name, role and contacts; the download links on the right, or
+   below them when there's no room. A flex row with gap puts space only
+   between items, so a link that wraps starts at the left edge. */
+.cv-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ink);
+}
+.cv-name { margin: 0; }
+.cv-role { margin: 0 0 0.5rem; color: var(--muted); }
+.cv-contacts { list-style: none; margin: 0; padding: 0; }
+.cv-downloads { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin: 0; }
+
+/* Section labels: small caps in the accent color. */
+.cv-line__label, .cv-h2 {
+  margin: 0;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.cv-h2 { margin-block: 1.5rem 0.75rem; padding-bottom: 0.25rem; border-bottom: 1px solid var(--line); }
+
+/* Objective and qualities: the label beside the text; above it on phones. */
+.cv-line { display: grid; grid-template-columns: 8rem 1fr; gap: 0.25rem 1rem; align-items: baseline; margin-block: 1rem; }
+.cv-line__text { margin: 0; }
+.cv-line--qualities { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--ink); }
+@media (max-width: 30rem) {
+  .cv-line { grid-template-columns: 1fr; }
+}
+
+/* Main column and side column. The side column is a flex item that wraps
+   below the main one when the two no longer fit side by side. */
+.cv-body { display: flex; flex-wrap: wrap; gap: 0 3rem; }
+.cv-main { flex: 999 1 28rem; }
+.cv-aside { flex: 1 1 16rem; }
+
+/* A job or a school: the title on the left, the years on the right
+   (wrapping below the title on narrow screens). */
+.cv-entry + .cv-entry { margin-top: 1.5rem; }
+.cv-h3row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 1rem; }
+.cv-h3 { margin: 0; font-size: 1.0625rem; }
+.cv-meta { color: var(--muted); font-size: 0.875rem; }
+/* Still running: the design's red "recording" dot. An empty pseudo-element
+   draws it, so screen readers have nothing to read; the text says "present". */
+.cv-meta--current::before {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 0.4em;
+  border-radius: 50%;
+  background: #B3122A;
+}
+
+.cv-lead, .cv-lead-tags { margin-bottom: 0.25rem; }
+.cv-steps { margin-top: 0; padding-left: 1.5rem; }
+.cv-tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.cv-tags li { padding: 0.125rem 0.5rem; border: 1px solid var(--line); border-radius: 3px; font-size: 0.875rem; }
+.cv-bullets { padding-left: 1.25rem; }
+.cv-bullets li + li { margin-top: 0.25rem; }
+.cv-note { font-style: italic; color: var(--muted); }
+.cv-note--small { font-size: 0.875rem; }
+
+/* Equipment: the kinds in a narrow column, the models beside them. */
+.cv-kit { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: 0; }
+.cv-kit dt { color: var(--muted); }
+.cv-kit dd { margin: 0; }
