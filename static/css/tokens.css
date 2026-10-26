@@ -1,0 +1,23 @@
+/* Design tokens: the named colors and font stacks of design E, the whole
+   site's design system (from the CV design handoff, approved 2026-10-23).
+   Every other stylesheet refers to these names, never to raw values, so a
+   color is changed here once. Loaded by every site page (base.html) and
+   inlined into the CV's print page (cv_print.py), before all other styles. */
+
+:root {
+  /* color tokens */
+  --paper:       #FFFFFF;
+  --ink:         #1A1A1A;  /* body text, header/footer rules */
+  --text-2:      #3D3D3D;  /* dates and other "timecode" meta */
+  --text-3:      #4A4A4A;  /* secondary text: role line, notes, list bullets */
+  --text-4:      #595959;  /* labels: contact icons, equipment kinds, captions */
+  --rule:        #CFCFCF;  /* hairlines */
+  --chip-border: #BDBDBD;  /* outlined tags and buttons */
+  --placeholder: #EDEDED;  /* empty image slots */
+  --accent:      #B3122A;  /* REC red, the only accent: used sparingly */
+
+  /* type tokens */
+  --font-display: 'Roboto Condensed', 'Arial Narrow', sans-serif;
+  --font-body:    'PT Sans', Arial, sans-serif;
+  --font-mono:    'Roboto Mono', monospace;
+}

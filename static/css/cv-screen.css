@@ -1,0 +1,169 @@
+/* CV · screen layer for the CV page on the site: load after cv-base.css.
+   The CV block's screen sizes, its fluid two-column layout, the download
+   buttons and the phone rules; the site's own header, footer and padding
+   come from site.css.
+
+   From the CV design handoff (docs/reference/cv-handoff/reference/cv-screen.css,
+   artboards "Site · CV page · desktop" and "… · phone"); our changes are
+   marked "Ours". */
+
+/* ---------- the CV block: fluid, centered by its container ---------- */
+
+.cv--web {
+  width: 100%;
+  max-width: 856px;                   /* 920 px column minus 32 px padding each side */
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cv--web a { color: inherit; text-decoration: none; }
+.cv--web a:hover { color: var(--accent); text-decoration: underline; }
+
+/* ---------- header ---------- */
+
+.cv--web .cv-header { flex-wrap: wrap; gap: 24px 32px; padding-bottom: 28px; }
+.cv--web .cv-photo  { width: 144px; height: 180px; font-size: 13px; }
+.cv--web .cv-id     { flex: 1 1 340px; gap: 8px; }
+.cv--web .cv-name   { font-size: 48px; }
+.cv--web .cv-role   { margin-bottom: 8px; font-size: 18px; }
+.cv--web .cv-contacts    { gap: 4px; font-size: 15px; }
+.cv--web .cv-contacts li { gap: 8px; }
+.cv--web .cv-icon        { width: 16px; height: 16px; }
+
+/* contacts are links on screen: Telegram → t.me, portfolio → the site's projects page */
+.cv--web .cv-contacts a {
+  text-decoration: underline;
+  text-decoration-color: var(--chip-border);
+  text-underline-offset: 3px;
+}
+
+/* downloads take the QR code's place */
+.cv-downloads {
+  width: 132px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Ours: the label is a paragraph and the buttons a list, so both need
+   their default margins (and the list its bullets) removed. */
+.cv-downloads__label {
+  margin: 0;
+  font: 500 12px/1.4 var(--font-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+
+.cv-downloads__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-download {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--chip-border);
+  border-radius: 3px;
+  font: 500 13px/1 var(--font-mono);
+  color: var(--ink);
+}
+
+.cv-download .cv-icon { stroke: var(--accent); }
+
+/* ---------- labelled lines ---------- */
+
+.cv--web .cv-line                { flex-wrap: wrap; gap: 4px 20px; }
+.cv--web .cv-line--objective     { padding: 20px 0 44px; }
+.cv--web .cv-line--qualities     { margin-top: 48px; padding-top: 20px; }
+.cv--web .cv-line__label         { width: 92px; font-size: 13px; }
+.cv--web .cv-line__text          { flex: 1 1 300px; }
+.cv--web .cv-line--objective .cv-line__text { font-size: 17px; }
+.cv--web .cv-line--qualities .cv-line__text { font-size: 16px; line-height: 1.6; }
+
+/* ---------- two columns that stack when narrow ---------- */
+
+.cv--web .cv-body  { display: flex; flex-wrap: wrap; gap: 44px 56px; }
+.cv--web .cv-main  { flex: 999 1 460px; min-width: 0; gap: 40px; }
+.cv--web .cv-aside { flex: 1 1 280px; min-width: 0; gap: 32px; }   /* 280 keeps every equipment model on one line */
+
+/* ---------- sections, at screen sizes ---------- */
+
+.cv--web .cv-section          { gap: 12px; }
+.cv--web .cv-h2               { gap: 14px; font-size: 16px; }
+.cv--web .cv-h2::after {
+  background:
+    linear-gradient(var(--accent), var(--accent)) left center / 22px 2px no-repeat,
+    linear-gradient(var(--rule), var(--rule)) left center / 100% 1px no-repeat;
+}
+.cv--web .cv-h3row            { gap: 4px 16px; }
+.cv--web .cv-h3               { font-size: 17px; }
+.cv--web .cv-meta             { gap: 7px; font-size: 13px; }
+.cv--web .cv-meta--current::before { width: 7px; height: 7px; }
+.cv--web .cv-section p.cv-lead      { margin-top: 6px; }
+.cv--web .cv-section p.cv-lead-tags { margin-top: 8px; }
+.cv--web .cv-steps            { gap: 4px; }
+.cv--web .cv-steps li         { gap: 16px; }
+.cv--web .cv-steps li::before { width: 22px; font-size: 13px; }
+.cv--web .cv-tags             { gap: 8px; }
+.cv--web .cv-tags li          { font-size: 14px; padding: 8px 12px; }
+.cv--web .cv-bullets          { gap: 10px; }
+.cv--web .cv-bullets li       { padding-left: 16px; }
+.cv--web .cv-bullets li::before { top: 11px; }
+.cv--web .cv-kit              { grid-template-columns: 96px minmax(0, 1fr); gap: 6px 12px; font-size: 15px; }
+.cv--web .cv-section p.cv-note--small { font-size: 15px; }
+
+/* ---------- phones ---------- */
+
+@media (max-width: 600px) {
+  /* Header as a grid: name, role, then contacts and downloads full width.
+     Ours: one column, and the photo column only when there is a photo
+     (:has() asks whether the header contains one); the design always had
+     its placeholder there. */
+  .cv--web .cv-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 16px;
+    padding-bottom: 22px;
+  }
+  .cv--web .cv-header:has(.cv-photo) { grid-template-columns: 96px minmax(0, 1fr); }
+  .cv--web .cv-id       { display: contents; }
+  .cv--web .cv-photo    { width: 96px; height: 120px; grid-row: 1 / 3; font-size: 12px; }
+  .cv--web .cv-name     { align-self: end; font-size: 30px; line-height: 1.05; }
+  .cv--web .cv-role     { align-self: start; margin: 8px 0 0; font-size: 13.5px; line-height: 1.4; letter-spacing: 1px; }
+  .cv--web .cv-contacts { grid-column: 1 / -1; margin-top: 16px; gap: 2px; }
+  .cv--web .cv-contacts li { min-height: 32px; }     /* comfortable tap targets */
+
+  .cv-downloads        { grid-column: 1 / -1; width: auto; margin-top: 16px; }
+  .cv-downloads__links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cv-download         { justify-content: center; min-height: 44px; padding: 0; }
+
+  /* labels sit above their text */
+  .cv--web .cv-line                { flex-direction: column; gap: 4px; }
+  .cv--web .cv-line--objective     { padding: 18px 0 32px; }
+  .cv--web .cv-line--qualities     { margin-top: 40px; padding-top: 18px; }
+  .cv--web .cv-line__label         { width: auto; font-size: 12px; }
+  .cv--web .cv-line__text          { flex: none; }
+  .cv--web .cv-line--objective .cv-line__text { line-height: 1.5; }
+
+  /* one column; the flex-wrap above already stacks main before aside */
+  .cv--web .cv-body  { gap: 36px; }
+  .cv--web .cv-main,
+  .cv--web .cv-aside { gap: 36px; }
+
+  .cv--web .cv-h3row { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .cv--web .cv-h3    { line-height: 1.4; }
+  .cv--web .cv-steps { gap: 6px; }
+  .cv--web .cv-steps li { gap: 14px; }
+  .cv--web .cv-kit   { grid-template-columns: 112px minmax(0, 1fr); }
+}

@@ -1,0 +1,272 @@
+/* CV · shared base — every CV component, at print (A4) sizes.
+   From the CV design handoff (docs/reference/cv-handoff/reference/cv-base.css,
+   design E, approved 2026-10-23); our changes are marked "Ours".
+   Used twice: inlined into the print page (templates/cv_print.css follows it)
+   and linked from the CV page on the site (cv-screen.css follows it).
+   The colors and fonts are tokens from tokens.css, which loads first. */
+
+* { box-sizing: border-box; }
+
+/* ---------- the CV block ---------- */
+
+.cv {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+/* ---------- header: photo · identity · (QR in print | downloads on screen) ---------- */
+
+.cv-header {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cv-photo {
+  width: 120px;
+  height: 150px;                      /* 4:5 portrait, ≈ 32 × 40 mm */
+  flex: none;
+  display: block;
+  object-fit: cover;
+  background: var(--placeholder);
+}
+
+.cv-photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font: 400 12px/1.4 var(--font-mono);
+  color: var(--text-4);
+}
+
+.cv-id {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;          /* block sits on the photo's bottom edge */
+  gap: 6px;
+}
+
+.cv-name {
+  margin: 0;
+  font: 700 40px/1 var(--font-display);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cv-role {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.cv-contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;             /* one contact per line */
+  gap: 3px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.cv-contacts li { display: flex; align-items: center; gap: 6px; }
+
+.cv-icon {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  fill: none;
+  stroke: var(--text-4);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- labelled full-width lines (objective, qualities) ---------- */
+
+.cv-line { display: flex; align-items: baseline; gap: 16px; margin: 0; }
+
+.cv-line--objective { padding: 14px 0 28px; }
+
+.cv-line--qualities { padding-top: 14px; border-top: 1px solid var(--ink); }
+
+.cv-line__label {
+  width: 76px;                        /* same width on both lines so the text aligns */
+  flex: none;
+  margin: 0;
+  font: 500 12px/1.55 var(--font-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cv-line__text { margin: 0; }
+.cv-line--objective .cv-line__text { font-size: 15px; }
+.cv-line--qualities .cv-line__text { font-size: 14px; line-height: 1.6; }
+
+/* ---------- two-column body (the grid itself is in cv-print.css / cv-screen.css) ---------- */
+
+.cv-main  { display: flex; flex-direction: column; gap: 30px; }
+.cv-aside { display: flex; flex-direction: column; gap: 24px; }   /* sections flow top-down; no bottom anchoring */
+
+/* ---------- section ---------- */
+
+.cv-section { display: flex; flex-direction: column; gap: 10px; }
+.cv-section p { margin: 0; }
+
+/* Ours: each job and school is wrapped in .cv-entry, which the design's
+   markup doesn't have. The wrapper spaces its parts like the section does;
+   "inherit" takes the section's gap, so the screen layer's larger gap
+   applies here too without a rule of its own. */
+.cv-entry { display: flex; flex-direction: column; gap: inherit; }
+
+/* heading + rule: a 20 × 2 px accent mark, then a 1 px grey hairline to the column edge */
+.cv-h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 700 14.5px/1.55 var(--font-display);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.cv-h2::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background:
+    linear-gradient(var(--accent), var(--accent)) left center / 20px 2px no-repeat,
+    linear-gradient(var(--rule), var(--rule)) left center / 100% 1px no-repeat;
+}
+
+.cv-h3row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cv-h3 { margin: 0; font-size: 15px; font-weight: 700; }
+
+.cv-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 400 12px/1.55 var(--font-mono);
+  color: var(--text-2);
+}
+
+/* "recording" dot = this entry is current */
+.cv-meta--current::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.cv-section p.cv-lead      { margin-top: 4px; }   /* "Полный цикл…" */
+.cv-section p.cv-lead-tags { margin-top: 6px; }   /* "Основные направления работы:" */
+
+.cv-section p.cv-note {
+  margin-top: 4px;
+  font-style: italic;
+  color: var(--text-3);
+}
+.cv-section p.cv-note--small { font-size: 13.5px; }
+
+/* workflow: one step per line, red 01–06 in a fixed column */
+.cv-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  counter-reset: step;
+}
+
+.cv-steps li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  counter-increment: step;
+}
+
+.cv-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  width: 20px;
+  flex: none;
+  font: 500 12px/1.55 var(--font-mono);
+  color: var(--accent);
+}
+
+/* work-area tags */
+.cv-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cv-tags li {
+  font-size: 13px;
+  line-height: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--chip-border);
+  border-radius: 3px;
+}
+
+/* square-bullet lists (skills, sports) */
+.cv-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-bullets li { position: relative; padding-left: 14px; }
+
+.cv-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  background: var(--text-3);
+}
+
+/* equipment: kind in grey · model */
+.cv-kit {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 4px 10px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.cv-kit dt { color: var(--text-4); }
+.cv-kit dd { margin: 0; }

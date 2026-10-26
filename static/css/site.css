@@ -1,29 +1,33 @@
-/* Temporary stylesheet: just enough to make the structure readable.
-   The real design comes in a later lesson. */
-
-:root {
-  --ink: #1B2127;
-  --muted: #5A6570;
-  --accent: #2A5C78;
-  --line: #DCE1E4;
-  --bg: #FFFFFF;
-}
+/* The site's own styles: layout and page components. Colors and fonts are
+   design E's tokens (tokens.css, loaded first). The CV page adds cv-base.css
+   and cv-screen.css. The pages' layouts are still the temporary first pass;
+   they move to design E one by one (step 7). */
 
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 1rem/1.6 var(--font-body);
   color: var(--ink);
-  background: var(--bg);
+  background: var(--paper);
 }
 
-a { color: var(--accent); }
+/* Links in ink with a light underline; red only on hover. The red is the
+   design's sparing accent: as the color of every link it would be everywhere. */
+a {
+  color: var(--ink);
+  text-decoration-color: var(--chip-border);
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent); text-decoration-color: currentColor; }
 
 /* Images never overflow their container; height follows the width. */
 img { max-width: 100%; height: auto; }
 
-.container { max-width: 60rem; margin: 0 auto; padding: 0 1rem; }
+/* padding-inline sets only the left and right padding. The shorthand
+   padding: 0 1rem would also set top and bottom to 0, and as a class rule
+   it beats the main rule below, so main never got its vertical padding. */
+.container { max-width: 60rem; margin: 0 auto; padding-inline: 1rem; }
 
 .site-header {
   display: flex;
@@ -31,7 +35,7 @@ img { max-width: 100%; height: auto; }
   align-items: baseline;
   gap: 0.5rem 2rem;
   padding-block: 1.25rem;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--rule);
 }
 .site-header ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
 .site-name { font-weight: 700; color: inherit; text-decoration: none; }
@@ -47,16 +51,16 @@ img { max-width: 100%; height: auto; }
 }
 
 main { padding-block: 2rem; }
-.role { color: var(--muted); margin-top: -0.75rem; }
+.role { color: var(--text-3); margin-top: -0.75rem; }
 
 /* Label-above-value list on the Contacts page. */
-.contacts dt { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
+.contacts dt { color: var(--text-4); font-size: 0.875rem; margin-top: 0.75rem; }
 .contacts dd { margin: 0; }
 
 .site-footer {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--rule);
   padding-block: 1.25rem;
-  color: var(--muted);
+  color: var(--text-3);
   font-size: 0.9375rem;
 }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
@@ -95,7 +99,7 @@ main { padding-block: 2rem; }
 .card a { color: inherit; text-decoration: none; }
 .card a:hover h3, .card a:focus-visible h3 { color: var(--accent); }
 .card h3 { margin: 0.5rem 0 0.25rem; }
-.card p { margin: 0; color: var(--muted); }
+.card p { margin: 0; color: var(--text-3); }
 .card-thumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
 .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -103,7 +107,7 @@ main { padding-block: 2rem; }
 .lead { font-size: 1.125rem; }
 
 .gear { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1.5rem; }
-.gear dt { color: var(--muted); }
+.gear dt { color: var(--text-4); }
 .gear dd { margin: 0; }
 
 /* ---------- Video player ---------- */
@@ -138,7 +142,7 @@ main { padding-block: 2rem; }
   border-color: transparent transparent transparent #fff;
 }
 .video-facade:hover .video-play,
-.video-facade:focus-visible .video-play { background: #D0342C; }
+.video-facade:focus-visible .video-play { background: var(--accent); }
 
 /* ---------- Photos ---------- */
 
@@ -157,7 +161,7 @@ main { padding-block: 2rem; }
   gap: 0.75rem;
 }
 /* Square thumbnails; the viewer shows the whole photo. */
-.gallery a { display: block; aspect-ratio: 1; overflow: hidden; background: var(--line); }
+.gallery a { display: block; aspect-ratio: 1; overflow: hidden; background: var(--placeholder); }
 .gallery img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -197,7 +201,7 @@ main { padding-block: 2rem; }
   font-size: 2rem; line-height: 1;
   cursor: pointer;
 }
-.lightbox button:hover, .lightbox button:focus-visible { background: #D0342C; }
+.lightbox button:hover, .lightbox button:focus-visible { background: var(--accent); }
 .lightbox-close { top: 1rem; right: 1rem; }
 .lightbox-prev, .lightbox-next { top: 50%; translate: 0 -50%; }
 .lightbox-prev { left: 1rem; }
@@ -208,14 +212,14 @@ main { padding-block: 2rem; }
 .courses, .books { list-style: none; margin: 0 0 1.5rem; padding: 0; }
 
 /* One course per row: a line between them, the title is the click target. */
-.courses > li { border-bottom: 1px solid var(--line); }
+.courses > li { border-bottom: 1px solid var(--rule); }
 .courses summary { cursor: pointer; padding-block: 0.5rem; font-weight: 600; }
 .courses details[open] { padding-bottom: 0.75rem; }
-.courses .label { margin: 1rem 0 0.25rem; font-size: 0.875rem; color: var(--muted); }
-.grade { margin-left: 0.5rem; font-weight: 400; color: var(--muted); }
+.courses .label { margin: 1rem 0 0.25rem; font-size: 0.875rem; color: var(--text-4); }
+.grade { margin-left: 0.5rem; font-weight: 400; color: var(--text-3); }
 
 .books li { margin-block: 0.5rem; }
-.takeaway { margin: 0.125rem 0 0; color: var(--muted); }
+.takeaway { margin: 0.125rem 0 0; color: var(--text-3); }
 
 /* Book titles: italics in English, «guillemets» in Russian typography.
    The HTML stays the same; only the presentation follows the language. */
@@ -231,82 +235,4 @@ main { padding-block: 2rem; }
 .achievements dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1.5rem; }
 .achievements dt { grid-column: 1; font-weight: 600; }
 .achievements dd { grid-column: 2; margin: 0; }
-.result { color: var(--muted); }
-
-/* ---------- CV ---------- */
-
-/* The CV block (partials/cv.html). Temporary, like the rest of this file:
-   step 7 replaces it with the design's cv-base.css and cv-screen.css. */
-
-/* Header: name, role and contacts; the download links on the right, or
-   below them when there's no room. A flex row with gap puts space only
-   between items, so a link that wraps starts at the left edge. */
-.cv-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--ink);
-}
-.cv-name { margin: 0; }
-.cv-role { margin: 0 0 0.5rem; color: var(--muted); }
-.cv-contacts { list-style: none; margin: 0; padding: 0; }
-.cv-downloads { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin: 0; }
-
-/* Section labels: small caps in the accent color. */
-.cv-line__label, .cv-h2 {
-  margin: 0;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-}
-.cv-h2 { margin-block: 1.5rem 0.75rem; padding-bottom: 0.25rem; border-bottom: 1px solid var(--line); }
-
-/* Objective and qualities: the label beside the text; above it on phones. */
-.cv-line { display: grid; grid-template-columns: 8rem 1fr; gap: 0.25rem 1rem; align-items: baseline; margin-block: 1rem; }
-.cv-line__text { margin: 0; }
-.cv-line--qualities { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--ink); }
-@media (max-width: 30rem) {
-  .cv-line { grid-template-columns: 1fr; }
-}
-
-/* Main column and side column. The side column is a flex item that wraps
-   below the main one when the two no longer fit side by side. */
-.cv-body { display: flex; flex-wrap: wrap; gap: 0 3rem; }
-.cv-main { flex: 999 1 28rem; }
-.cv-aside { flex: 1 1 16rem; }
-
-/* A job or a school: the title on the left, the years on the right
-   (wrapping below the title on narrow screens). */
-.cv-entry + .cv-entry { margin-top: 1.5rem; }
-.cv-h3row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 1rem; }
-.cv-h3 { margin: 0; font-size: 1.0625rem; }
-.cv-meta { color: var(--muted); font-size: 0.875rem; }
-/* Still running: the design's red "recording" dot. An empty pseudo-element
-   draws it, so screen readers have nothing to read; the text says "present". */
-.cv-meta--current::before {
-  content: "";
-  display: inline-block;
-  width: 0.5em;
-  height: 0.5em;
-  margin-right: 0.4em;
-  border-radius: 50%;
-  background: #B3122A;
-}
-
-.cv-lead, .cv-lead-tags { margin-bottom: 0.25rem; }
-.cv-steps { margin-top: 0; padding-left: 1.5rem; }
-.cv-tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.375rem; }
-.cv-tags li { padding: 0.125rem 0.5rem; border: 1px solid var(--line); border-radius: 3px; font-size: 0.875rem; }
-.cv-bullets { padding-left: 1.25rem; }
-.cv-bullets li + li { margin-top: 0.25rem; }
-.cv-note { font-style: italic; color: var(--muted); }
-.cv-note--small { font-size: 0.875rem; }
-
-/* Equipment: the kinds in a narrow column, the models beside them. */
-.cv-kit { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: 0; }
-.cv-kit dt { color: var(--muted); }
-.cv-kit dd { margin: 0; }
+.result { color: var(--text-3); }
