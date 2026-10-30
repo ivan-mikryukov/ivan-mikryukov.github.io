@@ -86,7 +86,7 @@
 
 .cv-contacts li { display: flex; align-items: center; gap: 6px; }
 
-.cv-icon {
+.cv .icon {
   width: 15px;
   height: 15px;
   flex: none;

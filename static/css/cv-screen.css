@@ -29,7 +29,7 @@
 .cv--web .cv-role   { margin-bottom: 8px; font-size: 18px; }
 .cv--web .cv-contacts    { gap: 4px; font-size: 15px; }
 .cv--web .cv-contacts li { gap: 8px; }
-.cv--web .cv-icon        { width: 16px; height: 16px; }
+.cv--web .icon           { width: 16px; height: 16px; }
 
 /* contacts are links on screen: Telegram → t.me, portfolio → the site's projects page */
 .cv--web .cv-contacts a {
@@ -79,7 +79,7 @@
   color: var(--ink);
 }
 
-.cv-download .cv-icon { stroke: var(--accent); }
+.cv-download .icon { stroke: var(--accent); }
 
 /* ---------- labelled lines ---------- */
 
@@ -125,7 +125,7 @@
 
 /* ---------- phones ---------- */
 
-@media (max-width: 600px) {
+@media (max-width: 37.5rem) {   /* 600px at the default 16px, in rem like the site's */
   /* Header as a grid: name, role, then contacts and downloads full width.
      Ours: one column, and the photo column only when there is a photo
      (:has() asks whether the header contains one); the design always had
