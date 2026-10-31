@@ -319,7 +319,7 @@ h2 + .spec { border-top: 0; }
    capitals, like the language switch, still underlined like every link in
    the text. */
 .more { margin: 1.5rem 0 0; }
-.more a, .back a, .jump-links a { font: 500 0.8125rem/1.2 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.more a, .back a, .jump-links a, .not-found li a { font: 500 0.8125rem/1.2 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
 
 /* ---------- Project pages ---------- */
 
@@ -553,6 +553,23 @@ h2 + .spec { border-top: 0; }
 }
 .achievements dd { grid-column: 2; margin: 0; }
 .result { color: var(--text-3); }
+
+/* ---------- 404 page ---------- */
+
+/* The message in both languages, side by side where there is room, each
+   under its own section heading; stacked on phones. Each section spans
+   three rows of the outer grid and lays its heading, text and links on
+   them (subgrid), so the rows line up across the languages even when one
+   text wraps onto more lines. The links are styled like "All projects →"
+   (.more). */
+.not-found { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+.not-found section { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+.not-found p { margin: 0; }
+.not-found ul { display: grid; gap: 0.75rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+
+@media (max-width: 40rem) {
+  .not-found { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* ---------- Reduced motion ---------- */
 
